@@ -6,6 +6,8 @@
 * The use case I have chosen involves providing a computer with this chatbot to patients in a hospital emergency room to give them a quick recommendation based on their symptoms and direct them to the appropriate service.
 * This chatbot can be used for other purposes by modifying the data source that serves as a reference for the questions. The LLM model can also be adjusted according to the needs and computational capabilities of the machine.
 * This chatbot uses LangChain framework and Nvidia technologies (e.g. Nvidia AI Endpoints for Embeddings and Nvidia CUDA for inference)
+* This chatbot takes its context and responses by vector similarity search to give adequate responses.
+* The medical departement is chosen via mapping according to symptoms. 
 
 ## Getting Started
 
