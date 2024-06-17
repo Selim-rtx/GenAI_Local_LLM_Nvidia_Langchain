@@ -111,10 +111,30 @@ chain = (
     | StrOutputParser()
 )
 
+# Define department mapping function
+def recommend_department(symptoms: str) -> str:
+    departments = {
+        "cardio": ["chest pain", "heart attack", "hypertension"],
+        "neuro": ["headache", "stroke", "seizure"],
+        "ortho": ["back pain", "joint pain", "fracture"],
+        "ent": ["sore throat", "ear pain", "sinusitis"],
+        "derm": ["rash", "itching", "skin infection"],
+        "endocrinology": ["weight loss", "increased appetite", "palpitations", "hyperthyroidism"],
+        # These are examples, and are not exhaustive. Add more mappings as needed
+    }
+
+    for department, keywords in departments.items():
+        if any(keyword in symptoms.lower() for keyword in keywords):
+            return department
+
+    return "general"
+
 # Define the chatbot function
 def chatbot(input_text):
     docs = docsearch.similarity_search(input_text)
     response = chain.invoke({"context": docs, "question": input_text})
+    department = recommend_department(input_text)
+    return f"{response}\n\nRecommended Department: {department.capitalize()}"
     return response
 
 # Create a Gradio interface
