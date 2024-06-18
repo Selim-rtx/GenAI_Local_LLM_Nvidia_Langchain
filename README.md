@@ -16,13 +16,14 @@
 You will have to install on your computer the following tools: 
 * [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
 * [cuDNN](https://developer.nvidia.com/cudnn)
-* Visual Studio - Development with C++ for desktop (make sure to chose all the elements checked by default) 
+* Visual Studio - Development with C++ for desktop (make sure to install all the elements checked by default) 
 
 You will need to pip install the following libraries:
 * langchain langchain-community langchainhub
 * beautifulsoup4
 * pycuda
 * llama-cpp-python (but I used another fork of this library giving information about CUDA usage through verbose = True, please find below in Installing section more details)
+* gradio
 
 You will need an Nvidia API key for the Nvidia Embeddings :
 * Create an Nvidia NGC account (https://catalog.ngc.nvidia.com/)
@@ -44,7 +45,7 @@ I installed all the libraries above but for llama I used the following :
 python -m pip install llama-cpp-python==0.2.26 --prefer-binary --extra-index-url=https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX2/cu122
 ```
 It's a llama-cpp wheel that I found on this github : [llama-cpp-python cuBLAS wheels](https://github.com/jllllll/llama-cpp-python-cuBLAS-wheels)
-I chose this version because I had issues with Wheels installation and I wanted to be sure that I was using CUDA for inference, and I found exactly what I wanted thanks to this github page. As you will see, you have to know if your CPU uses AVX, and chose the right version according to your python and CUDA Toolkit versions you have on your computer.
+I chose this version because I had issues with Wheels installation and I wanted to be sure that I was using CUDA for inference, and I found exactly what I wanted thanks to this github page. As you will see, you have to know if your CPU uses AVX, and chose the right version according to your python and CUDA Toolkit version you have on your computer.
 
 ## Datasets and model choice
 For the dataset I used to make the vector store, I chose these links to a github proposing medical Q&As in json format: 
@@ -52,6 +53,13 @@ For the dataset I used to make the vector store, I chose these links to a github
 * [icliniqQAs](https://github.com/LasseRegin/medical-question-answer-data/blob/master/icliniqQAs.json)
 
 For the model, I chose quantized Mistral-7b found on Hugging Face :
+[Mistral-7](bhttps://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
+
+I recommend to fine tune this model on your dataset before using it for inference. I followed this tutorial to do so :
+[Fine tuning](https://rentry.org/cpu-lora#appendix-a-hardware-requirements)
+
+## GPU offloading
+When you configure your model, you can choose through gpu_layers, how many layers of the model you can offload to the GPU. I offload half (22/44) because when I offload them all, the GPU was too overloaded probably because it's too short in RAM. I tested only 1 layer on the GPU and the rest on the CPU, and it was slower (22 layer on GPU : 74225.40 ms, 1 layer on GPU : 82348.80 ms). It could be more significant if I had at least 12 Gb of RAM on the GPU)
 
 ### Executing program
 
@@ -86,6 +94,8 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 Please find below documentations I used to write my code : 
 * [Nvidia Embeddings](https://nvidia.github.io/GenerativeAIExamples/latest/notebooks/10_RAG_for_HTML_docs_with_Langchain_NVIDIA_AI_Endpoints.html))
 * [LangChain QA](https://python.langchain.com/v0.2/docs/tutorials/local_rag/)
-* [Medical Q&A Dataset](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+
+My hardware specifications are :
+CPU : Intel Core i7-1165G7 (Quad-Core 1.2 GHz - 2.8 GHz / 4.7 GHz Turbo - 8 Threads - Cache 12 Mo - TDP 28 W) 
+RAM : 16 Go DDR4 3200 Mhz
+GPU : Nvidia RTX 2060 M (6 Go V-RAM)
