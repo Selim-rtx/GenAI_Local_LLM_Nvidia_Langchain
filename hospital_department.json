@@ -1,0 +1,278 @@
+[
+    {
+        "symptom": "chest pain",
+        "pain_type": "sharp",
+        "department": "Cardiology",
+        "additional_info": "Immediate evaluation for potential heart attack or other cardiac issues."
+    },
+    {
+        "symptom": "chest pain",
+        "pain_type": "dull",
+        "department": "Cardiology",
+        "additional_info": "Evaluation for potential heart-related issues or other causes."
+    },
+    {
+        "symptom": "shortness of breath",
+        "pain_type": "none",
+        "department": "Pulmonology",
+        "additional_info": "Assessment for respiratory conditions such as asthma, COPD, or infections."
+    },
+    {
+        "symptom": "severe headache",
+        "pain_type": "throbbing",
+        "department": "Neurology",
+        "additional_info": "Evaluation for potential migraines, cluster headaches, or neurological conditions."
+    },
+    {
+        "symptom": "abdominal pain",
+        "pain_type": "cramping",
+        "department": "Gastroenterology",
+        "additional_info": "Assessment for gastrointestinal issues such as IBS, gastritis, or appendicitis."
+    },
+    {
+        "symptom": "abdominal pain",
+        "pain_type": "sharp",
+        "department": "Surgery",
+        "additional_info": "Immediate evaluation for potential surgical conditions such as appendicitis or gallstones."
+    },
+    {
+        "symptom": "fever",
+        "pain_type": "none",
+        "department": "Infectious Diseases",
+        "additional_info": "Assessment for infections or other systemic conditions causing fever."
+    },
+    {
+        "symptom": "back pain",
+        "pain_type": "dull",
+        "department": "Orthopedics",
+        "additional_info": "Evaluation for musculoskeletal issues or injuries."
+    },
+    {
+        "symptom": "back pain",
+        "pain_type": "sharp",
+        "department": "Orthopedics",
+        "additional_info": "Immediate evaluation for potential spinal injuries or acute conditions."
+    },
+    {
+        "symptom": "skin rash",
+        "pain_type": "itchy",
+        "department": "Dermatology",
+        "additional_info": "Assessment for dermatological conditions such as eczema, psoriasis, or allergic reactions."
+    },
+    {
+        "symptom": "cough",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Evaluation for common respiratory issues such as colds, bronchitis, or mild infections."
+    },
+    {
+        "symptom": "sore throat",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Assessment for common throat infections, such as pharyngitis or tonsillitis."
+    },
+    {
+        "symptom": "dizziness",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Initial evaluation for causes such as dehydration, vertigo, or low blood pressure."
+    },
+    {
+        "symptom": "nausea",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Assessment for potential gastrointestinal issues, infections, or other causes."
+    },
+    {
+        "symptom": "joint pain",
+        "pain_type": "dull",
+        "department": "Rheumatology",
+        "additional_info": "Evaluation for conditions such as arthritis, bursitis, or other joint-related issues."
+    },
+    {
+        "symptom": "ear pain",
+        "pain_type": "sharp",
+        "department": "Otolaryngology",
+        "additional_info": "Assessment for ear infections, wax buildup, or other ear-related issues."
+    },
+    {
+        "symptom": "eye pain",
+        "pain_type": "sharp",
+        "department": "Ophthalmology",
+        "additional_info": "Immediate evaluation for potential eye injuries or acute conditions."
+    },
+    {
+        "symptom": "burning sensation during urination",
+        "pain_type": "burning",
+        "department": "Urology",
+        "additional_info": "Assessment for urinary tract infections or other urological conditions."
+    },
+    {
+        "symptom": "leg swelling",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Initial evaluation for potential causes such as edema, deep vein thrombosis, or infections."
+    },
+    {
+        "symptom": "minor cuts or abrasions",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Basic wound care and assessment for potential infections."
+    },
+    {
+        "symptom": "minor allergic reactions",
+        "pain_type": "itchy",
+        "department": "General",
+        "additional_info": "Evaluation and treatment for mild allergic reactions, including rashes and itching."
+    },
+{
+        "symptom": "numbness in limbs",
+        "pain_type": "none",
+        "department": "Neurology",
+        "additional_info": "Assessment for neurological conditions such as neuropathy or stroke."
+    },
+    {
+        "symptom": "frequent urination",
+        "pain_type": "none",
+        "department": "Urology",
+        "additional_info": "Evaluation for potential urinary tract issues or diabetes."
+    },
+    {
+        "symptom": "loss of appetite",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Initial assessment for a variety of potential causes including infections, gastrointestinal issues, or psychological factors."
+    },
+    {
+        "symptom": "unexplained weight loss",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Comprehensive evaluation for underlying causes such as metabolic disorders, infections, or malignancies."
+    },
+    {
+        "symptom": "persistent cough",
+        "pain_type": "none",
+        "department": "Pulmonology",
+        "additional_info": "Assessment for chronic respiratory conditions such as asthma, bronchitis, or lung infections."
+    },
+    {
+        "symptom": "difficulty swallowing",
+        "pain_type": "none",
+        "department": "Gastroenterology",
+        "additional_info": "Evaluation for esophageal conditions or other gastrointestinal issues."
+    },
+    {
+        "symptom": "swollen glands",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Initial evaluation for infections, immune system disorders, or other underlying causes."
+    },
+    {
+        "symptom": "vomiting",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Assessment for gastrointestinal issues, infections, or other causes."
+    },
+    {
+        "symptom": "blood in urine",
+        "pain_type": "none",
+        "department": "Urology",
+        "additional_info": "Immediate evaluation for potential urinary tract infections, kidney stones, or other urological conditions."
+    },
+    {
+        "symptom": "blurred vision",
+        "pain_type": "none",
+        "department": "Ophthalmology",
+        "additional_info": "Evaluation for eye conditions such as refractive errors, cataracts, or other ocular issues."
+    },
+    {
+        "symptom": "acute confusion",
+        "pain_type": "none",
+        "department": "Neurology",
+        "additional_info": "Immediate evaluation for potential neurological conditions such as stroke, infections, or metabolic imbalances."
+    },
+    {
+        "symptom": "swelling in one leg",
+        "pain_type": "none",
+        "department": "Vascular Surgery",
+        "additional_info": "Assessment for potential deep vein thrombosis or other vascular conditions."
+    },
+    {
+        "symptom": "persistent fatigue",
+        "pain_type": "none",
+        "department": "General",
+        "additional_info": "Comprehensive evaluation for underlying causes such as anemia, thyroid disorders, or chronic fatigue syndrome."
+    },
+    {
+        "symptom": "loss of consciousness",
+        "pain_type": "none",
+        "department": "Emergency",
+        "additional_info": "Immediate evaluation for potential serious conditions such as seizures, stroke, or cardiac issues."
+    },
+    {
+        "symptom": "painful urination",
+        "pain_type": "burning",
+        "department": "Urology",
+        "additional_info": "Assessment for urinary tract infections, sexually transmitted infections, or other urological conditions."
+    },
+    {
+        "symptom": "joint swelling",
+        "pain_type": "none",
+        "department": "Rheumatology",
+        "additional_info": "Evaluation for arthritis, gout, or other joint-related conditions."
+    },
+    {
+        "symptom": "itchy eyes",
+        "pain_type": "itchy",
+        "department": "Ophthalmology",
+        "additional_info": "Assessment for allergic reactions or eye infections."
+    },
+    {
+        "symptom": "nosebleeds",
+        "pain_type": "none",
+        "department": "Otolaryngology",
+        "additional_info": "Evaluation for causes such as nasal dryness, trauma, or underlying health conditions."
+    },
+    {
+        "symptom": "persistent diarrhea",
+        "pain_type": "none",
+        "department": "Gastroenterology",
+        "additional_info": "Assessment for gastrointestinal infections, inflammatory bowel disease, or other GI conditions."
+    },
+    {
+        "symptom": "unexplained bruising",
+        "pain_type": "none",
+        "department": "Hematology",
+        "additional_info": "Evaluation for potential blood disorders or other underlying health issues."
+    },
+    {
+        "symptom": "persistent sore throat",
+        "pain_type": "none",
+        "department": "Otolaryngology",
+        "additional_info": "Assessment for chronic throat infections, allergies, or other ENT conditions."
+    },
+    {
+        "symptom": "lump in breast",
+        "pain_type": "none",
+        "department": "Oncology",
+        "additional_info": "Immediate evaluation for potential breast cancer or other breast-related conditions."
+    },
+    {
+        "symptom": "hearing loss",
+        "pain_type": "none",
+        "department": "Otolaryngology",
+        "additional_info": "Assessment for ear infections, hearing impairment, or other ear-related conditions."
+    },
+    {
+        "symptom": "persistent hoarseness",
+        "pain_type": "none",
+        "department": "Otolaryngology",
+        "additional_info": "Evaluation for potential vocal cord issues, infections, or other ENT conditions."
+    },
+    {
+        "symptom": "tremors",
+        "pain_type": "none",
+        "department": "Neurology",
+        "additional_info": "Assessment for neurological conditions such as Parkinson's disease or essential tremor."
+    }  
+]
