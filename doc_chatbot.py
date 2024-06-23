@@ -3,6 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from typing import List, Union
+import gradio as gr
 from langchain.chains import ConversationalRetrievalChain, LLMChain
 from langchain.chains.conversational_retrieval.prompts import CONDENSE_QUESTION_PROMPT, QA_PROMPT
 from langchain.chains.question_answering import load_qa_chain
@@ -14,7 +15,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnablePick
 from langchain import hub
 from langchain_community.llms import LlamaCpp
-import gradio as gr
 
 # Function to load HTML content from a URL
 def html_document_loader(url: Union[str, bytes]) -> str:
@@ -42,6 +42,7 @@ def create_embeddings(embedding_path: str = "./embed"):
     urls = [
         "https://github.com/LasseRegin/medical-question-answer-data/blob/master/ehealthforumQAs.json",
         "https://github.com/LasseRegin/medical-question-answer-data/blob/master/icliniqQAs.json",
+        "https://github.com/Selim-rtx/GenAI_Local_LLM_Nvidia_Langchain/blob/main/hospital_department.json", #AI generated file
     ]
 
     documents = [html_document_loader(url) for url in urls]
@@ -65,7 +66,7 @@ def index_docs(documents: List[str], dest_embed_dir: str) -> None:
         faiss_index.save_local(folder_path=dest_embed_dir)
 
 # Get NVIDIA API key
-os.environ["NVIDIA_API_KEY"] = "YOUR_API_KEY"
+os.environ["NVIDIA_API_KEY"] = "YOUR_NVIDIA_API_KEY" 
 
 # Create embeddings if they don't exist
 embedding_path = "./embed"
@@ -80,10 +81,10 @@ docsearch = FAISS.load_local(folder_path=embedding_path, embeddings=embedding_mo
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # Path to the downloaded GGUF model file
-model_path = r"YOUR_PATH\mistral-7b-openorca.Q4_0.gguf" #Quantized Mistral-7b has been chosen for example. If you want to run the model on-device, such as a laptop, take a quantized model.
-n_gpu_layers=22,  
-n_batch=8,       
-n_ctx=2048
+model_path = r"PATH_TO_YOUR_MODEL"  
+n_gpu_layers = 22
+n_batch = 8
+n_ctx = 2048
 
 # Configure model parameters for GPU usage
 llm = LlamaCpp(
@@ -111,39 +112,27 @@ chain = (
     | StrOutputParser()
 )
 
-# Define department mapping function
-def recommend_department(symptoms: str) -> str:
-    departments = {
-        "cardio": ["chest pain", "heart attack", "hypertension"],
-        "neuro": ["headache", "stroke", "seizure"],
-        "ortho": ["back pain", "joint pain", "fracture"],
-        "ent": ["sore throat", "ear pain", "sinusitis"],
-        "derm": ["rash", "itching", "skin infection"],
-        "endocrinology": ["weight loss", "increased appetite", "palpitations", "hyperthyroidism"],
-        # These are examples, and are not exhaustive. Add more mappings as needed
-    }
-
-    for department, keywords in departments.items():
-        if any(keyword in symptoms.lower() for keyword in keywords):
-            return department
-
-    return "general"
-
 # Define the chatbot function
 def chatbot(input_text):
+    # Perform similarity search
     docs = docsearch.similarity_search(input_text)
-    response = chain.invoke({"context": docs, "question": input_text})
-    department = recommend_department(input_text)
-    return f"{response}\n\nRecommended Department: {department.capitalize()}"
-    return response
+    
+    # Get the responses from the LLM for the two hard-coded questions
+    concise_recommendation = chain.invoke({"context": docs, "question": "What are your recommendations regarding these symptoms?"})
+    right_department = chain.invoke({"context": docs, "question": "What is the right department to go to according to the symptoms and why ?"})
+    
+    # Combine the responses
+    combined_response = f"Concise Recommendation: {concise_recommendation.split('Context:')[0].strip()}\n\nRight Department: {right_department.split('Context:')[0].strip()}\n\n Please take these informations with caution. This project is not ready for production."
+    
+    return combined_response
 
 # Create a Gradio interface
 iface = gr.Interface(
     fn=chatbot,
-    inputs=gr.Textbox(lines=7, label="Enter your question"),
+    inputs=gr.Textbox(lines=7, label="Enter patient's symptoms, type of pain, and any additional information"),
     outputs=gr.Textbox(label="Chatbot Response"),
     title="Dr Chatbot",
-    description="Ask questions about patient's symptoms or observations"
+    description="Provide the patient's symptoms, type of pain, and any additional information to get a concise recommendation and the right department to go to."
 )
 
 # Launch the interface
