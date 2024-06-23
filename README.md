@@ -4,10 +4,9 @@
 ## Description
 
 * The use case I have chosen involves providing a computer with this chatbot to patients in a hospital emergency room to give them a quick recommendation based on their symptoms and direct them to the appropriate service.
-* This chatbot can be used for other purposes by modifying the data source that serves as a reference for the questions. The LLM model can also be adjusted according to the needs and computational capabilities of the machine.
+* This chatbot can be used for other purposes by modifying the data source that serves as a reference for the questions. The LLM model can also be quantized according to the needs and computational capabilities of the machine.
 * This chatbot uses LangChain framework and Nvidia technologies (e.g. Nvidia AI Endpoints for Embeddings and Nvidia CUDA for inference)
-* This chatbot takes its context and responses by vector similarity search to give adequate responses.
-* The medical departement is chosen via mapping according to symptoms. 
+* This chatbot takes its context and responses by vector similarity search to give adequate responses (e.g.: quick recommendations and right medical department).
 
 ## Getting Started
 
@@ -33,7 +32,7 @@ You will need an Nvidia API key for the Nvidia Embeddings :
 
 ### Installing
 
-I coded my project in a virtual environement:
+I coded my project in a virtual environement in Visual Studio Code:
 ```
 python3 -m venv venv
 ```
@@ -47,10 +46,13 @@ python -m pip install llama-cpp-python==0.2.26 --prefer-binary --extra-index-url
 It's a llama-cpp wheel that I found on this github : [llama-cpp-python cuBLAS wheels](https://github.com/jllllll/llama-cpp-python-cuBLAS-wheels)
 I chose this version because I had issues with Wheels installation and I wanted to be sure that I was using CUDA for inference, and I found exactly what I wanted thanks to this github page. As you will see, you have to know if your CPU uses AVX, and chose the right version according to your python and CUDA Toolkit version you have on your computer.
 
+You can download the json files and use them locally with JSONLoader.
+
 ## Datasets and model choice
-For the dataset I used to make the vector store, I chose these links to a github proposing medical Q&As in json format: 
+Concerning the datasets I used, to make the vector store, I chose these links to a github proposing medical Q&As in json format: 
 * [eHealthforumsQAs](https://github.com/LasseRegin/medical-question-answer-data/blob/master/ehealthforumQAs.json)
 * [icliniqQAs](https://github.com/LasseRegin/medical-question-answer-data/blob/master/icliniqQAs.json)
+And I generated with ChatGPT 4o, a json with symptoms and the medical department where to go. You will find the file named hospital_departement.json in this github.
 
 For the model, I chose quantized Mistral-7b found on Hugging Face :
 [Mistral-7](bhttps://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
