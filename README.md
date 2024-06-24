@@ -1,4 +1,4 @@
-# Implementation of a local LLM-based contextual chatbot with LangChain and Nvidia AI Endpoints for healthcare sector 
+# Implementation of a local LLM-based contextual chatbot with RAG using LangChain and Nvidia AI Endpoints for healthcare sector 
 * This project aims to propose a chatbot designed according to privacy by design principles to avoid sending sensitive data outside the device in healthcare sector.
   
 ## Description
