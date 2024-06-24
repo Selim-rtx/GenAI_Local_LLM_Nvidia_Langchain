@@ -10,6 +10,8 @@
 * The chatbot provides the answers to hard coded questions by vector similarity search of the inputs (i.e. patient’s symptoms in our case) and are augmented with the model’s knowledge.
 * This chatbot takes its context and responses by vector similarity search to give adequate responses (i.e.: quick recommendations and right medical department) which are augmented with the informations carried by the model.
 
+## Video Presentation
+[](https://www.youtube.com/watch?v=OjoA3c8PRKA)
 ## Getting Started
 
 ### Dependencies
