@@ -19,6 +19,7 @@
 ### Dependencies
 
 You will have to install on your computer the following tools: 
+* [Python](https://www.python.org/downloads/)
 * [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
 * [cuDNN](https://developer.nvidia.com/cudnn)
 * Visual Studio - Development with C++ for desktop (make sure to install all the elements checked by default) 
