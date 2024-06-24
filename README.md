@@ -11,7 +11,9 @@
 * This chatbot takes its context and responses by vector similarity search to give adequate responses (i.e.: quick recommendations and right medical department) which are augmented with the informations carried by the model.
 
 ## Video Presentation
-[](https://www.youtube.com/watch?v=OjoA3c8PRKA)
+
+[![Watch the video]([https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg])](https://www.youtube.com/watch?v=OjoA3c8PRKA))
+
 ## Getting Started
 
 ### Dependencies
