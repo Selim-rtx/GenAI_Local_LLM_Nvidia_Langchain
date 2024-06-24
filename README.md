@@ -5,8 +5,10 @@
 
 * The use case I have chosen involves providing a computer with this chatbot to patients in a hospital emergency room to give them a quick recommendation based on their symptoms and direct them to the appropriate service.
 * This chatbot can be used for other purposes by modifying the data source used for retrieval to answer the questions. The LLM model can also be quantized and fine tuned according to the needs and computational capabilities of the machine.
-* This chatbot uses LangChain framework and Nvidia technologies (i.e. Nvidia AI Endpoints for Embeddings and Nvidia CUDA for inference)
-* This chatbot takes its context and responses by vector similarity search to give adequate responses (e.g.: quick recommendations and right medical department) which are augmented with the informations carried by the model.
+* I tried this chatbot with quantized versions of Mistral-7b and Llama2-13b
+* This chatbot uses LangChain framework (perform the vector store indexing through FAISS and run the model through LLAMA.cpp with RAG among other things), Nvidia technologies (i.e. Nvidia AI Endpoints for Embeddings and Nvidia CUDA for inference) and Gradio for the front-end.
+* The chatbot provides the answers to hard coded questions by vector similarity search of the inputs (i.e. patient’s symptoms in our case) and are augmented with the model’s knowledge.
+* This chatbot takes its context and responses by vector similarity search to give adequate responses (i.e.: quick recommendations and right medical department) which are augmented with the informations carried by the model.
 
 ## Getting Started
 
@@ -54,14 +56,15 @@ Concerning the datasets I used, to make the vector store, I chose these links to
 * [icliniqQAs](https://github.com/LasseRegin/medical-question-answer-data/blob/master/icliniqQAs.json)
 And I generated with ChatGPT 4o, a json with symptoms and the medical department where to go. You will find the file named hospital_departement.json in this github.
 
-For the model, I chose quantized Mistral-7b found on Hugging Face :
-[Mistral-7](bhttps://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
+For the model, I tried quantized Mistral-7b and Llama-13b from Hugging Face :
+* [Mistral-7b](bhttps://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
+* [Llama-13b](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF)
 
 I recommend to fine tune this model on your dataset before using it for inference. I followed this tutorial to do so :
 [Fine tuning](https://rentry.org/cpu-lora#appendix-a-hardware-requirements)
 
 ## GPU offloading
-When you configure your model, you can choose through gpu_layers, how many layers of the model you can offload to the GPU. I offload half (22/44) because when I offload them all, the GPU was too overloaded probably because it's too short in RAM. I tested only 1 layer on the GPU and the rest on the CPU, and it was slower (22 layer on GPU : 74225.40 ms, 1 layer on GPU : 82348.80 ms). It could be more significant if I had at least 12 Gb of RAM on the GPU)
+When you configure your model, you can choose through gpu_layers, how many layers of the model you can offload to the GPU. I offload half (22/44) because when I offload them all, the GPU was too overloaded probably because it's too short in RAM. I tested only 1 layer on the GPU and the rest on the CPU, and it was slower. The inference took 4 minutes in my case because I used a laptop configuration (RTX 2060M). For production, a desktop with an RTX 30 or 40 series with at least 12 Gb of VRAM or a professional GPU such as Quadro RTX would be more appropriate and way faster. 
 
 ### Executing program
 
