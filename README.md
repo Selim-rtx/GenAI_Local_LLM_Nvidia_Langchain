@@ -12,7 +12,7 @@
 
 ## Video Presentation
 
-[![Watch the video]([https://img.youtube.com/vi/OjoA3c8PRKA/0.jpg])](https://www.youtube.com/watch?v=OjoA3c8PRKA))
+[![Watch the video]([https://img.youtube.com/vi/OjoA3c8PRKA/0.jpg])](https://www.youtube.com/watch?v=OjoA3c8PRKA)
 
 ## Getting Started
 
